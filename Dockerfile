@@ -1,7 +1,7 @@
 FROM --platform=linux/amd64 ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Instal·lem el necessari
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     python3 python3-pip wget git file dc unzip && rm -rf /var/lib/apt/lists/*
 
@@ -17,13 +17,13 @@ COPY requirements.txt /app/
 COPY scripts/ /app/scripts/
 COPY resources/ /app/resources/
 
-# Instal·lem dependències bàsiques
+# Install base dependencies
 RUN python3 -m pip install --no-cache-dir -r /app/requirements.txt
 
-# Instal·lem les dependències que sí que existeixen i són necessàries
+# Install additional necessary dependencies
 RUN pip install --no-cache-dir batchgenerators dynamic-network-architectures batchgeneratorsv2 matplotlib seaborn
 
-# 10. Clonem i instal·lem nnUNet
+# Clone and install nnUNet
 RUN git clone https://github.com/MIC-DKFZ/nnUNet.git /app/nnUNet && \
     cd /app/nnUNet && \
     pip install -e .
