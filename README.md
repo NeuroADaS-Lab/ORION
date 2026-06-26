@@ -25,8 +25,8 @@ This pipeline is fully optimized to run on CPU environments (including Apple Sil
 Clone this repository and build the Docker image. The build process will automatically download Ubuntu 22.04, install FSL, and set up all Python dependencies (including PyTorch and nnU-Net).
 
 ```
-git clone https://github.com/your-username/orion-pipeline.git
-cd orion-pipeline
+git clone https://github.com/NeuroADaS-Lab/ORION.git
+cd ORION
 docker build -t orion-pipeline .
 ```
 
